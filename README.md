@@ -1,6 +1,6 @@
 # algorithm-leetcode
 
-###26. Remove Dup in Sorted Array
+###26. [Remove Dup in Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)（376 ms）
 ```数组``` ```两个指针```
 
 删除一个已经排序好的数组中的重复元素。返回新数组的长度。
@@ -20,3 +20,4 @@
 1. 一开始对题目的理解有问题，以为只需要返回新长度就可以了，所以只追踪了长度，并没有对数组进行任何的变动。但是提交后发现，它要求必须构建出已经移除了重复元素的数组
 2. 应该将数组长度为0的情况作为特殊情况讨论，否则会出现超时的错误。
 3. 注意修改while循环if条件做runner自增后，需要相应改动runner的初始化部分
+

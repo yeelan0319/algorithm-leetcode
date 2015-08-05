@@ -2,19 +2,13 @@ public class Solution {
 	public int removeDuplicates(int[] nums) {
 		if(nums.length < 3) return nums.length;
 
-		int pivot = 0, runner = 0, length = nums.length;
-		boolean flag = false;
-		while(++runner < length) {
-			if(nums[runner] != nums[pivot] || !flag){
-				if(nums[runner] == nums[pivot] && !flag) {
-					flag = true;
-				}
-				else{
-					flag = false;
-				}	
-				nums[++pivot] = nums[runner];
+		int pivot = 2, runner = 2, length = nums.length;
+		while(runner < length){
+			if(nums[runner] != nums[pivot - 1] || nums[runner] != nums[pivot - 2]){
+				nums[pivot++] = nums[runner];
 			}
+			runner++;
 		}
-		return pivot + 1;
+		return pivot;
 	}
 }

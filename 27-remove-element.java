@@ -1,12 +1,28 @@
 public class Solution {
 	public int removeElement(int[] nums, int val){
-		int pivot = 0, runner = 0, length = nums.length;
-		while(runner < length) {
-			if(nums[runner] != val) {
-				nums[pivot++] = nums[runner];
+		if(nums.length == 0) return 0;
+
+		int pivot = 0, runner = nums.length - 1;
+		while(true) {
+			while(pivot < runner && nums[runner] == val){
+				runner--;
 			}
-			runner++;
+			while(pivot < runner && nums[pivot] != val){
+				pivot++;
+			}
+			if(pivot < runner) {
+				nums[pivot] = nums[runner];
+				runner--;
+			}
+			else{
+				break;
+			}
 		}
-		return pivot;
+		if(nums[pivot] == val) {
+			return pivot;
+		}
+		else {
+			return pivot + 1;
+		}
 	}
 }

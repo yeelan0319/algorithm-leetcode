@@ -70,7 +70,7 @@
 
 
 
-###88. [Merge Sorted Array](https://leetcode.com/problems/merge-sorted-array/)
+###88. [Merge Sorted Array](https://leetcode.com/problems/merge-sorted-array/) (292ms)
 ```数组``` ```两个指针```
 
 将两个已经排好序的，长度分别为m,n的数组num1, num2合并为num1。其中num1的长度大于m+n。

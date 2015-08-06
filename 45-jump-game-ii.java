@@ -1,6 +1,6 @@
 public class Solution {
-  public boolean canJump(int[] nums) {
-  	int maxReachableIndex = 0, i = 0, temp = 0;
+  public int jump(int[] nums) {
+  	int maxReachableIndex = 0, minStep = 0, i = 0, temp = 0;
   	while(maxReachableIndex < nums.length - 1) {
   		temp = maxReachableIndex;
   		for(; i <= maxReachableIndex; i++) {
@@ -8,13 +8,9 @@ public class Solution {
   				temp = nums[i] + i;
   			}
   		}
-  		if(temp <= maxReachableIndex) {
-  			return false;
-  		}
-  		else {
-  			maxReachableIndex = temp;
-  		}
+  		maxReachableIndex = temp;
+  		minStep++;
   	}
-    return true;
+    return minStep;
   }
 }

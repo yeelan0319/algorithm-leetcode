@@ -91,7 +91,7 @@
 
 
 
-###75. [Sort Colors](https://leetcode.com/problems/sort-colors/) (292ms)
+###75. [Sort Colors](https://leetcode.com/problems/sort-colors/) (248ms)
 ```数组``` ```两个指针```
 
 排序一个由red(0), white(1), blue(2)组成的数组。不可以使用内置的排序函数
@@ -99,3 +99,28 @@
 **分析**
 
 1. 其实就是跑两遍，第一遍把所有的0换到前面来，第二遍把所有的1换到前面来。由于只循环两次，所以是O(n)。这里是个特例，还用不到quicksort一类的就可以
+
+
+### 128. [Longest Consecutive Sequence ](https://leetcode.com/problems/longest-consecutive-sequence/)
+```数组``` 
+
+给定一个未经过排序的数组，寻找其中最长的连续数字序列。
+
+**要求**
+1. 复杂度是O(n)
+
+**分析**
+1. 由于要求复杂度是O(n)，所以不可能进行排序。
+2. 根据网上的提示使用Hashmap进行处理，这样的好处是可以使用O(n)对数组进行遍历后，就可以尝试使用某值x, x+1, x-1的方式来判断它上下是否出现过。从而寻找最长长度序列。
+
+**错误**
+1. 注意++和--的执行顺序。
+
+
+###55. [Jump Game](https://leetcode.com/problems/jump-game/)
+```数组``` ```贪婪算法``` ```区间覆盖```
+
+给定一组非负的整数数组，每一个数组中的元素代表可以从该位置前进的最大步数。若从最小的index出发，返回是否可以到达最大的index。
+
+**分析**
+1. 其实这个问题相当于给定一组已经按照起点升序排好的区间段，问是否他们覆盖了整个区间。

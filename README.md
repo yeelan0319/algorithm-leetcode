@@ -139,3 +139,21 @@
 1. 本题应该是假设终点可以到达
 2. 相当于给定一组已经起点按照升序排好的区间段，问从中如何选出最小的区间覆盖解。
 3. 永远从当前可用集中选出右端点最大的值，并且将其加入到采用的跳法上。
+
+###121. [best time to buy and sell stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+```数组``` ```DP```
+
+给定一个数组是一只股票的收盘价，问在只允许一次交易（买卖一次）的情况下，最大的收益是多少？
+
+###122. [best time to buy and sell stock II](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/)
+```数组``` ```贪婪算法```
+
+给定一个数组是一只股票的收盘价，问在允许任意多次交易（但是不可以买空卖空）的情况下，最大的收益是多少？
+
+
+###123. [best time to buy and sell stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/)
+```数组``` ```DP```
+
+给定一个数组是一只股票的收盘价，问在只允许2次交易的情况下，最大的收益是多少？
+
+

@@ -10,11 +10,11 @@ public class Solution {
       }
       else if(prices[i] > prices[i + 1] && hasStock == true) {
         hasStock = false;
-        totalProfit = prices[i] - buyingPrice;
+        totalProfit += prices[i] - buyingPrice;
       }
   	}
     if(hasStock) {
-      totalProfit = prices[length - 1] - buyingPrice;
+      totalProfit += prices[prices.length - 1] - buyingPrice;
     }
   	return totalProfit;    
   }

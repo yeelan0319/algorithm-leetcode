@@ -214,7 +214,7 @@ gas和cost分别代表i这一站可以加到的油的数量以及到达i+1站所
 
 1. int x;不可以直接用于计算，必须要初始化。java中只有数组的所有元素会自动初始化为0。
 
-137. [Single Number II](https://leetcode.com/problems/single-number-ii/)
+###137. [Single Number II](https://leetcode.com/problems/single-number-ii/)
 ```按位操作```
 
 给定一个数组，其中除了一个数字，剩下的数字均出现了三次，寻找只出现了一次的数。
@@ -226,3 +226,28 @@ gas和cost分别代表i这一站可以加到的油的数量以及到达i+1站所
 **错误**
 
 1. Java的if中不能直接讲非零数字转化为boolean，所以必须显性的写出==
+
+###41. [First Missing Positive](https://leetcode.com/problems/first-missing-positive/)
+```数组```
+
+给定一个数组，寻找里面最小的未出现的正整数。
+
+**错误**
+
+1. 注意一种可能性是所有的数字都出现了，所以下一个未出现的是数组以外的数字的情况。
+
+
+###53. [Maxium Subarray](https://leetcode.com/problems/maximum-subarray/)
+```数组``` ```DP```
+
+**错误**
+
+1. 注意初始化的最小加和并不是0，而是最小的正整数。这是因为很有可能最后的答案都是负值。注意什么情况下需要置零。
+
+
+###152. [Maxium Product Subarray](https://leetcode.com/problems/maximum-product-subarray/)
+```数组``` ```DP```
+
+**分析**
+
+1. 注意理清楚思路，看是如何区分0，负数，正数三种不同的情况的。

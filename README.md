@@ -101,8 +101,8 @@
 1. 其实就是跑两遍，第一遍把所有的0换到前面来，第二遍把所有的1换到前面来。由于只循环两次，所以是O(n)。这里是个特例，还用不到quicksort一类的就可以
 
 
-### 128. [Longest Consecutive Sequence ](https://leetcode.com/problems/longest-consecutive-sequence/)
-```数组``` 
+### 128. [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/)
+```数组```
 
 给定一个未经过排序的数组，寻找其中最长的连续数字序列。
 
@@ -251,3 +251,32 @@ gas和cost分别代表i这一站可以加到的油的数量以及到达i+1站所
 **分析**
 
 1. 注意理清楚思路，看是如何区分0，负数，正数三种不同的情况的。
+
+
+###1. [Two Sum](https://leetcode.com/problems/two-sum/)
+```数组``` ```Hash表```
+
+给定一个数组和一个值，从中寻找数组中那两个元素加和为该值，返回以1为起始的下标数组。其中第一个数字小于第二个数字。
+
+**错误**
+
+1. 有可能会出现负数和零的情况，所以并不需要额外加上判断nums[i] < target，这其实是一个应该在题目出现的时候提出给面试官的问题。
+2. HashMap是需要两个范型类型的，另外还是注意type type type！！
+
+###15. [3Sum](https://leetcode.com/problems/3sum/)
+```数组``` ```两个指针```
+
+给定一个数组，从中寻找所有加和为0的三个数的组合。返回结果中，三个数字必须升序排列而且不可以有重复答案。
+
+**分析**
+
+1. 两个要求升序和不重复答案基本就说明了本题的做法。首先应该分析，如果是两个指针嵌套循环的情况下，复杂度一定是o(n2)级别。因此，将数组进行排序并不会影响运算的复杂度，反而可以降低寻找的复杂性和放入list时所需要的比较。因此本题对数组首先进行排序，之后一个指针指向起始位，另外的两个指针从两侧向中间寻找适合的答案。
+2. 本题最后的复杂度为o(n2)
+
+**错误**
+
+1. 最大的问题还是对类型这个概念比较弱。首先，明确一下在Java中抽象类不能够实例化，也就是不可以new。但是左侧声明类型的时候是可以使用抽象类的。也就是说List<List<Integer>> res = new ArrayList<List<Integer>>(); 是可以的。一个疑问是为什么ArrayList<ArrayList<Integer>>不可以cast为List<List<Integer>>呢？明明看起来不会在安全性上出现任何问题的样子。
+2. 写的时候还是要注意逻辑。什么情况下去重，低位向上，高位向下。这些细节都不要弄错。
+
+###18. [4Sum](https://leetcode.com/problems/4sum/)
+

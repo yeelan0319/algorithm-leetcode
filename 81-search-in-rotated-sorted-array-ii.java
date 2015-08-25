@@ -1,13 +1,16 @@
 public class Solution {
-	public int search(int[] nums, int target) {
-		if(nums.length == 0) return -1;
+	public boolean search(int[] nums, int target) {
+		if(nums.length == 0) return false;
 
 		int start = 0;
 		int end = nums.length - 1;
 		while(start <= end) {
 			int center = (start + end) / 2;
 			if(nums[center] == target) {
-				return center;
+				return true;
+			}
+			else if(nums[center] == nums[end]){
+				end--;
 			}
 			else if(nums[center] < target) {
 				if(nums[end] < target && nums[end] > nums[center]) {
@@ -26,6 +29,6 @@ public class Solution {
 				}
 			}
 		}
-		return -1;
+		return false;
 	}
 }

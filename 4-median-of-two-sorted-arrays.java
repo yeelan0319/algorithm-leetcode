@@ -37,7 +37,7 @@ public class Solution {
 				start2 += step;
 				distance -= step;
 			}
-			if(start1 > nums1.length - 1){
+			if(start1 > nums1.length - 1) {
         if((nums1.length + nums2.length) % 2 == 0) {
           return ((double)nums2[start2 + distance] + (double)nums2[start2 + distance + 1]) / 2;
         }
@@ -58,7 +58,7 @@ public class Solution {
 			if(nums1[start1] > nums2[start2] && start2 < nums2.length -1) {
 				return ((double)Math.min(nums1[start1], nums2[start2 + 1]) + (double)nums2[start2]) / 2;
 			}
-			else if(nums1[start1] < nums2[start2] && start1 < nums1.length - 1){
+			else if(nums1[start1] < nums2[start2] && start1 < nums1.length - 1) {
 				return ((double)Math.min(nums2[start2], nums1[start1 + 1]) + (double)nums1[start1]) / 2;
 			}
 			else {

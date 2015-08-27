@@ -6,21 +6,22 @@ public class Solution {
 		int maxLength = 0;
 		int start = 0;
 		int end = 0;
+		HashSet<Character> hm = new HashSet<Character>();
+
 		while(end < s.length()) {
-			HashMap<Character, Integer> hm = new HashMap<Character, Integer>();
-			for(end = start; end < s.length(); end++) {
-				if(!hm.containsKey(s.charAt(end))) {
-					hm.put(s.charAt(end), end);
-				}
-				else {
-					if(maxLength < end - start) {
-						maxLength = end - start;
-					}
-					start = hm.get(s.charAt(end)) + 1;
-					break;
+			if(!hm.contains(s.charAt(end))) {
+				hm.add(s.charAt(end));
+			}
+			else {
+				maxLength = Math.max(maxLength, end - start);
+				while(s.charAt(start) != s.charAt(end)) {
+					hm.remove(s.charAt(start));
+					start++;
 				}
 			}
+			end++;
 		}
+		maxLength = Math.max(maxLength, s.length() - start);
 		return maxLength;
 	}
 }

@@ -17,59 +17,32 @@ public class Driver {
             }
             System.out.println(" ");
         }
-
-//        if (res == expectValue) {
-//            System.out.println(s + ": Pass");
-//        } else {
-//            System.out.println(s + ": Fail");
-//            System.out.println("Expect " + expectValue + ", Return " + res);
-//        }
     }
 
     public static List<List<String>> groupAnagrams(String[] strs) {
         if(strs == null || strs.length == 0) {
             return null;
         }
-        List<List<String>> ret = new LinkedList<List<String>>();
+        HashMap<Integer, List<String>> hm = new HashMap<Integer, List<String>>();
         //list可以使用这样的形式循环而不用使用Iterator
         for(String s : strs) {
-            List<String> des = findAnagramGroup(ret, s);
-            if(des != null) {
-                insertStringIntoGroup(des, s);
+            char[] strarray =  s.toCharArray();
+            Arrays.sort(strarray);
+            int hashcode = Arrays.hashCode(strarray);
+            List<String> des;
+            if(hm.containsKey(hashcode)){
+                des = hm.get(hashcode);
             }
             else {
                 des = new LinkedList<String>();
-                des.add(s);
-                ret.add(des);
+                hm.put(hashcode, des);
             }
+            des.add(s);
         }
-        return ret;
-    }
-    public static List<String> findAnagramGroup(List<List<String>> ret, String s) {
+        java.util.Collection<List<String>> ret = hm.values();
         for(List<String> list : ret){
-            if(belongToGroup(list, s)) {
-                return list;
-            }
+            java.util.Collections.sort(list);
         }
-        return null;
-    }
-    public static boolean belongToGroup(List<String> list, String s) {
-        char[] element = list.get(0).toCharArray();
-        char[] string = s.toCharArray();
-        //是Arrays本身有静态Sort方法而不是int[], String[]有sort方法
-        Arrays.sort(element);
-        Arrays.sort(string);
-        return Arrays.equals(element, string)? true : false;
-    }
-    public static void insertStringIntoGroup(List<String> list, String s) {
-        int index = 0;
-        for(String element : list) {
-            //注意此处的比较条件，而且不是在此处插入，因为这样没有办法在list的末尾插入
-            if (element.compareTo(s) >= 0) {
-                break;
-            }
-            index++;
-        }
-        list.add(index, s);
+        return new ArrayList<List<String>>(ret);
     }
 }

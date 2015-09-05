@@ -30,18 +30,16 @@ public class Driver {
 
     public static TreeNode buildTree(int[] preorder, int[] inorder) {
         if(preorder.length == 0) return null;
-        if(preorder.length == 1) {
-            TreeNode node = new TreeNode(preorder[0]);
-            return node;
-        }
-        TreeNode node = new TreeNode(preorder[0]);
-        int i = 0;
-        while(inorder[i] != preorder[0]) i++;
-        node.left = buildTree(subArray(preorder, 1, i), subArray(inorder, 0, i - 1));
-        node.right = buildTree(subArray(preorder, i + 1, preorder.length - 1), subArray(inorder, i + 1, inorder.length - 1));
-        return node;
+        return buildTreeHelper(preorder, 0, inorder, 0, preorder.length);
     }
-    public static int[] subArray(int[] array, int start, int end) {
-        return start > end? new int[]{} : Arrays.copyOfRange(array, start, end + 1);
+    public static TreeNode buildTreeHelper(int[] preorder, int prestart, int[] inorder, int instart, int length) {
+        if(length <= 0) return null;
+        if(length == 1) return new TreeNode(preorder[prestart]);
+        TreeNode node = new TreeNode(preorder[prestart]);
+        int i = 0;
+        while (inorder[instart + i] != preorder[prestart]) i++;
+        node.left = buildTreeHelper(preorder, prestart + 1, inorder, instart, i);
+        node.right = buildTreeHelper(preorder, prestart + i + 1, inorder, instart + i + 1, length - i - 1);
+        return node;
     }
 }

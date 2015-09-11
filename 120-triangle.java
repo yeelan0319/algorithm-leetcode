@@ -35,34 +35,18 @@ public class Driver {
             System.out.println("Expect " + expectValue + ", Return " + res);
         }
     }
-
+    static int min = Integer.MAX_VALUE;
     public static int minimumTotal(List<List<Integer>> triangle) {
-        int n = triangle.size();
-        int min = Integer.MAX_VALUE;
-        LinkedList<Integer> pos = new LinkedList<Integer>();
-        int[] res = new int[n];
-        pos.add(0);
-        res[0] = triangle.get(0).get(0);
-        while(pos.size() > 0) {
-            int index = pos.size();
-            int p = pos.getLast();
-            while(index < n) {
-                res[index] = res[index - 1] + triangle.get(index).get(p);
-                pos.add(p);
-                index = pos.size();
-            }
-            min = Math.min(min, res[n - 1]);
-            int lastpos = pos.removeLast();
-            while(pos.size() > 0 && lastpos == pos.getLast() + 1) {
-                lastpos = pos.removeLast();
-            }
-            index = pos.size();
-            p = lastpos + 1;
-            if(lastpos + 1 < triangle.get(index).size()) {
-                res[index] = res[index - 1] + triangle.get(index).get(p);
-                pos.add(p);
-            }
-        }
+        minimumTotalHelper(triangle, 0 ,0 ,0);
         return min;
+    }
+    public static void minimumTotalHelper(List<List<Integer>> triangle, int level, int pos, int sum) {
+    	sum += triangle.get(level).get(pos);
+    	if(level == triangle.size() - 1) {
+    		min = Math.min(min, sum);
+    		return;
+    	}
+    	minimumTotalHelper(triangle, level + 1, pos, sum);
+    	minimumTotalHelper(triangle, level + 1, pos + 1, sum);
     }
 }

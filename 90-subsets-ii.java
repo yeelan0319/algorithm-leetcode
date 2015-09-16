@@ -1,0 +1,54 @@
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
+import java.util.*;
+import java.util.function.BooleanSupplier;
+
+/**
+ * Created by yiranmao on 8/19/15.
+ */
+public class Driver {
+    public static void main(String[] args) {
+        test(1, new int[]{1,2,2}, 6);
+        test(2, new int[]{}, 0);
+        test(3, new int[]{1, 1}, 3);
+        test(4, new int[]{4, 1, 0}, 8);
+    }
+
+    public static void test(int testNo, int[] nums, int expectValue) {
+        List<List<Integer>> res = subsetsWithDup(nums);
+
+        for(List<Integer> l : res) {
+            System.out.println(l.toString());
+        }
+        System.out.println("");
+//        if (res == expectValue) {
+//            System.out.println(testNo + ": Pass");
+//        } else {
+//            System.out.println(testNo + ": Fail");
+//            System.out.println("Expect " + expectValue + ", Return " + res);
+//        }
+    }
+
+    public static List<List<Integer>> subsetsWithDup(int[] nums) {
+        Arrays.sort(nums);
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        res.add(new ArrayList<Integer>());
+        List<Integer> subset = new ArrayList<Integer>();
+        subsetsHelper(nums, subset, res, 0);
+        return res;
+    }
+    public static void subsetsHelper(int[] nums, List<Integer> subset, List<List<Integer>> res, int begin) {
+        if(begin == nums.length) return;
+        for(int i = begin; i < nums.length; i++) {
+            if(i > begin && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            else {
+                subset.add(nums[i]);
+                res.add(new ArrayList<Integer>(subset));
+                subsetsHelper(nums, subset, res, i + 1);
+                subset.remove(subset.size() - 1);
+            }
+        }
+    }
+}

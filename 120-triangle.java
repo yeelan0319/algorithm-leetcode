@@ -35,18 +35,18 @@ public class Driver {
             System.out.println("Expect " + expectValue + ", Return " + res);
         }
     }
-    static int min = Integer.MAX_VALUE;
+
     public static int minimumTotal(List<List<Integer>> triangle) {
-        minimumTotalHelper(triangle, 0 ,0 ,0);
-        return min;
-    }
-    public static void minimumTotalHelper(List<List<Integer>> triangle, int level, int pos, int sum) {
-    	sum += triangle.get(level).get(pos);
-    	if(level == triangle.size() - 1) {
-    		min = Math.min(min, sum);
-    		return;
-    	}
-    	minimumTotalHelper(triangle, level + 1, pos, sum);
-    	minimumTotalHelper(triangle, level + 1, pos + 1, sum);
+        int n = triangle.size();
+        int[] min = new int[n];
+        for(int i = 0; i < n; i++) {
+            min[i] = triangle.get(n - 1).get(i);
+        }
+        for(int i = n - 2; i >= 0; i--) {
+            for(int j = 0; j < i + 1; j++) {
+                min[j] = Math.min(min[j], min[j + 1]) + triangle.get(i).get(j);
+            }
+        }
+        return min[0];
     }
 }
